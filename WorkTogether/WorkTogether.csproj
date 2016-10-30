@@ -203,8 +203,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\WorkContext.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TimeTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

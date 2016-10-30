@@ -42,7 +42,7 @@ namespace WorkTogether
 
         public static UserManager Create(IdentityFactoryOptions<UserManager> options, IOwinContext context) 
         {
-            var manager = new UserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
+            var manager = new UserManager(new UserStore<User>(context.Get<WorkContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<User>(manager)
             {
