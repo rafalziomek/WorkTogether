@@ -14,33 +14,35 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
-                    <div class="col-md-8">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
-                    <div class="col-md-8">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-9">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row">
                     <div class="col-md-4">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
                             @Html.LabelFor(m => m.RememberMe)
                         </div>
                     </div>
-                    <div class="col-md-8 dropdown-menu-right">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                    <div class="col-md-8">
+                        <div class="btn-group pull-right " role="group">
+                            <input type="submit" value="Zaloguj" class="btn btn-default" />
+                            @Html.ActionLink("Załóż konto", "Register", null, new { @class = "btn btn-primary" })
+                        </div>
                     </div>
                 </div>
-                    <p>
-                        @Html.ActionLink("Załóż konto", "Register", null, new { @class = "btn btn-primary" })
-                    </p>
+                
+                
                     @* Enable this once you have account confirmation enabled for password reset functionality
                         <p>
                             @Html.ActionLink("Forgot your password?", "ForgotPassword")
