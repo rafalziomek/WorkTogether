@@ -1,0 +1,57 @@
+﻿@model WorkTogether.Models.WorkWeek
+
+@{
+    ViewBag.Title = "Details";
+}
+    <div class="container">
+        <h2>Rozkład pracy  </h2>
+        <h5>Tydzień @Model.StartWeek.ToShortDateString() - @Model.EndWeek.ToShortDateString()</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Poniedziałek</th>
+                    <th>Wtorek</th>
+                    <th>Środa</th>
+                    <th>Czwartek</th>
+                    <th>Piątek</th>
+                    <th>Sobota</th>
+                    <th>Niedziela</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Początek pracy</td>
+                    @foreach (var item in Model.WorkDay)
+                    {
+                        <td>@item.StartWork.ToShortTimeString()</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Koniec pracy</td>
+                    @foreach (var item in Model.WorkDay)
+                    {
+                        <td>@item.EndWork.ToShortTimeString()</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Wydział</td>
+                    @foreach (var item in Model.WorkDay)
+                    {
+                        <td>@item.Department</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Opis</td>
+                    @foreach (var item in Model.WorkDay)
+                    {
+                        <td>@item.Description</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) 
+    @Html.ActionLink("Wróć", "Index", null, new { @class = "btn btn-danger" })
+</p>

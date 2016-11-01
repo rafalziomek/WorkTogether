@@ -29,7 +29,7 @@ namespace WorkTogether.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndWeek
         {
-            get { return StartWeek.AddDays(7); }
+            get { return StartWeek.AddDays(6); }
         }
 
         //One to many with User connection
