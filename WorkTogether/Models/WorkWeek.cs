@@ -37,6 +37,6 @@ namespace WorkTogether.Models
         public virtual User User { get; set; }
 
         //One to many with WorkDay connection
-        public virtual ICollection<WorkDay> WorkDay { get; private set; }
+        public virtual ICollection<WorkDay> WorkDay { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace WorkTogether.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndWork { get; set; }
 
-        public string WorkWeekId { get; set; }
+        public int WorkWeekId { get; set; }
         public WorkWeek WorkWeek { get; set; }
     }
 }
