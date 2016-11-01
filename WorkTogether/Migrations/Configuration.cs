@@ -19,6 +19,8 @@ namespace WorkTogether.Migrations
 
         protected override void Seed(WorkTogether.Models.WorkContext context)
         {
+            if (System.Diagnostics.Debugger.IsAttached == false)
+                System.Diagnostics.Debugger.Launch();
             SeedRoles(context);
             SeedUsers(context);
             SeedWorkWeek(context);
@@ -41,8 +43,8 @@ namespace WorkTogether.Migrations
             var manager = new UserManager<User>(store);
             if (!context.Users.Any(u => u.UserName == "Admin"))
             {
-                var user = new User { UserName = "Admin" };
-                var adminresult = manager.Create(user, "12345678");
+                var user = new User { UserName = "Admin", DateOfBirth = DateTime.Now};
+                var adminresult = manager.Create(user, "Abcd123##");
                 if (adminresult.Succeeded)
                     manager.AddToRole(user.Id, "Admin");
             }
@@ -55,12 +57,13 @@ namespace WorkTogether.Migrations
             
             for (int i = 0; i < 10; i++)
             {
+                DateTime mondayInTheWeek = getLastMonday().AddDays(i * 7);
                 var workWeek = new WorkWeek()
                 {
                     Id = i,
                     UserId = userId,
-                    StartWeek = getLastMonday().AddDays(i * 7),
-                    WorkDay = getCollectionOfWorkDays(getLastMonday(), i)
+                    StartWeek = mondayInTheWeek,
+                    WorkDay = getCollectionOfWorkDays(mondayInTheWeek, i)
                 };
                 context.Set<WorkWeek>().AddOrUpdate(workWeek);
             }
